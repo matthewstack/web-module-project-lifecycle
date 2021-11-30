@@ -1,6 +1,7 @@
 import React from "react";
 import getUser from "./services/getUser";
 import getFollowers from "./services/getFollowers";
+import User from "./components/User";
 
 class App extends React.Component {
   state = {
@@ -49,11 +50,12 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        Github Card
+        <h1>Github Card</h1>
         <form>
           <input value={this.state.search} onChange={this.handleChange} />
           <button onClick={this.handleClick}>Search</button>
         </form>
+        <User user={this.state.user} />
       </div>
     );
   }
