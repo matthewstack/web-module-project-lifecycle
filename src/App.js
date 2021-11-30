@@ -29,8 +29,33 @@ class App extends React.Component {
     }
   }
 
+  handleClick = (e) => {
+    e.preventDefault();
+    getUser(this.state.search).then((user) => {
+      this.setState({
+        ...this.state,
+        user: user,
+      });
+    });
+  };
+
+  handleChange = (e) => {
+    this.setState({
+      ...this.state,
+      search: e.target.value,
+    });
+  };
+
   render() {
-    return <div>Github Card</div>;
+    return (
+      <div>
+        Github Card
+        <form>
+          <input value={this.state.search} onChange={this.handleChange} />
+          <button onClick={this.handleClick}>Search</button>
+        </form>
+      </div>
+    );
   }
 }
 
