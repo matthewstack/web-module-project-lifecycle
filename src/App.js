@@ -2,6 +2,8 @@ import React from "react";
 import getUser from "./services/getUser";
 import getFollowers from "./services/getFollowers";
 import User from "./components/User";
+import FollowerList from "./components/FollowerList";
+import "./App.css";
 
 class App extends React.Component {
   state = {
@@ -50,12 +52,18 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>Github Card</h1>
+        <h1>GITHUB INFO</h1>
         <form>
-          <input value={this.state.search} onChange={this.handleChange} />
+          <input
+            type="text"
+            value={this.state.search}
+            onChange={this.handleChange}
+          />
           <button onClick={this.handleClick}>Search</button>
         </form>
         <User user={this.state.user} />
+        <h2>FOLLOWERS:</h2>
+        <FollowerList followers={this.state.followers} />
       </div>
     );
   }
